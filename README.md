@@ -1,6 +1,6 @@
 # Google Search Robot
 
-Este repositório apresenta um estudo de caso desenvolvido como parte do desafio técnico para o processo seletivo da empresa BRAND MONITOR.
+Este repositório apresenta um estudo de caso desenvolvido como parte do desafio técnico para o processo seletivo da empresa BrandMonitor.
 
 ## Visão Geral
 
