@@ -27,9 +27,9 @@ import { SaveSearchDto } from './dto/save-search.dto';
 import { ISearch } from './interface/search.interface';
 import { SearchClass } from './schema/search.schema';
 export declare class SearchService {
-    private searchModel;
+    private readonly searchModel;
     constructor(searchModel: Model<ISearch>);
-    getHello(): string;
+    findAll(): Promise<ISearch[]>;
     sendDataToGoServer(data: Omit<SearchClass, 'dateTime'>): Promise<SearchClass>;
     saveDataProcessed(saveSearchDto: SaveSearchDto): Promise<import("mongoose").Document<unknown, {}, ISearch> & ISearch & {
         _id: import("mongoose").Types.ObjectId;

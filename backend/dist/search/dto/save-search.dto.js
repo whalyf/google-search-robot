@@ -26,7 +26,6 @@ __decorate([
 ], SaveSearchDto.prototype, "location", void 0);
 __decorate([
     (0, class_validator_1.IsNumber)(),
-    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], SaveSearchDto.prototype, "searchId", void 0);
 __decorate([

@@ -17,7 +17,7 @@ let SearchModule = class SearchModule {
 exports.SearchModule = SearchModule;
 exports.SearchModule = SearchModule = __decorate([
     (0, common_1.Module)({
-        imports: [mongoose_1.MongooseModule.forRoot('mongodb://localhost/nest'), mongoose_1.MongooseModule.forFeature([{ name: 'Search', schema: search_schema_1.SearchSchema }])],
+        imports: [mongoose_1.MongooseModule.forFeature([{ name: 'Search', schema: search_schema_1.SearchSchema }])],
         controllers: [search_controller_1.SearchController],
         providers: [search_service_1.SearchService],
     })

@@ -9,7 +9,6 @@ export class SaveSearchDto {
     readonly location: string;
     
     @IsNumber()
-    @IsNotEmpty()
     readonly searchId: string;
    
     @IsNumber()

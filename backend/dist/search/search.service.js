@@ -17,13 +17,12 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const axios_1 = require("axios");
 const mongoose_2 = require("mongoose");
-const search_schema_1 = require("./schema/search.schema");
 let SearchService = class SearchService {
     constructor(searchModel) {
         this.searchModel = searchModel;
     }
-    getHello() {
-        return 'Hello World!';
+    async findAll() {
+        return await this.searchModel.find();
     }
     async sendDataToGoServer(data) {
         try {
@@ -36,21 +35,19 @@ let SearchService = class SearchService {
         }
     }
     async saveDataProcessed(saveSearchDto) {
-        console.log('aqui', saveSearchDto);
         const newSearch = new this.searchModel(saveSearchDto);
-        console.log('ENTROU AQ');
         return await newSearch.save();
     }
     async search(searchParams) {
         const processedData = await this.sendDataToGoServer(searchParams);
-        console.log(processedData, 'aquiii');
+        const test = await this.saveDataProcessed(processedData);
         return { message: 'Dados da busca salvos com sucesso' };
     }
 };
 exports.SearchService = SearchService;
 exports.SearchService = SearchService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(search_schema_1.SearchClass.name)),
+    __param(0, (0, mongoose_1.InjectModel)('Search')),
     __metadata("design:paramtypes", [mongoose_2.Model])
 ], SearchService);
 //# sourceMappingURL=search.service.js.map

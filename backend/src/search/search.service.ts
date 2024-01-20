@@ -9,10 +9,10 @@ import { SearchClass } from './schema/search.schema';
 
 @Injectable()
 export class SearchService {
-  constructor(@InjectModel(SearchClass.name) private searchModel: Model<ISearch>) {}
+  constructor(@InjectModel('Search') private readonly searchModel: Model<ISearch>) {}
 
-  getHello(): string {
-    return 'Hello World!';
+  async findAll(): Promise<ISearch[]> {
+    return await this.searchModel.find();
   }
 
   async sendDataToGoServer(
@@ -28,16 +28,13 @@ export class SearchService {
   }
 
   async saveDataProcessed(saveSearchDto: SaveSearchDto) {
-    console.log('aqui', saveSearchDto);
     const newSearch = new this.searchModel(saveSearchDto);
-    console.log('ENTROU AQ');
     return await newSearch.save();
   }
 
   async search(searchParams: Omit<SearchClass, 'dateTime'>): Promise<any> {
     const processedData = await this.sendDataToGoServer(searchParams);
-    // await this.saveDataProcessed(processedData);
-    console.log(processedData, 'aquiii');
+    const test = await this.saveDataProcessed(processedData);
     return { message: 'Dados da busca salvos com sucesso' };
   }
 }

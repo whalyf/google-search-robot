@@ -5,7 +5,7 @@ import { SearchController } from './search.controller';
 import { SearchService } from './search.service';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb://localhost/nest'), MongooseModule.forFeature([{ name: 'Search', schema: SearchSchema }])],
+  imports: [MongooseModule.forFeature([{ name: 'Search', schema: SearchSchema }])],
   controllers: [SearchController],
   providers: [SearchService],
 })

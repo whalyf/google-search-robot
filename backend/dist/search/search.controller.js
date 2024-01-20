@@ -15,13 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SearchController = void 0;
 const common_1 = require("@nestjs/common");
 const crypto_1 = require("crypto");
+const save_search_dto_1 = require("./dto/save-search.dto");
 const search_service_1 = require("./search.service");
 let SearchController = class SearchController {
     constructor(searchService) {
         this.searchService = searchService;
-    }
-    getHello() {
-        return this.searchService.getHello();
     }
     search(body) {
         return this.searchService.search({
@@ -29,21 +27,24 @@ let SearchController = class SearchController {
             searchId: (0, crypto_1.randomUUID)(),
         });
     }
+    findAll() {
+        return this.searchService.findAll();
+    }
 };
 exports.SearchController = SearchController;
-__decorate([
-    (0, common_1.Get)(),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", String)
-], SearchController.prototype, "getHello", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", Object)
+    __metadata("design:paramtypes", [save_search_dto_1.SaveSearchDto]),
+    __metadata("design:returntype", Promise)
 ], SearchController.prototype, "search", null);
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], SearchController.prototype, "findAll", null);
 exports.SearchController = SearchController = __decorate([
     (0, common_1.Controller)('search'),
     __metadata("design:paramtypes", [search_service_1.SearchService])

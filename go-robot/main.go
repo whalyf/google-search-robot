@@ -21,17 +21,13 @@ func handleProcessRequest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Processa os dados recebidos do NestJS no próprio robô
 	processedResults := processNestJSData(searchParams)
 
-	// Retorna os resultados processados ao NestJS
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(processedResults)
 }
 
 func processNestJSData(searchParams map[string]interface{}) map[string]interface{} {
-	// Processa os dados recebidos do NestJS no próprio robô
-	// Neste exemplo, convertemos as keywords para maiúsculas e adicionamos a data e hora atual
 	return map[string]interface{}{
 		
 		"location":  searchParams["location"],
