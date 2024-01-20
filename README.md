@@ -15,6 +15,10 @@ O backend, implementado com NestJS, recebe as informações do frontend e se com
 ### Processador de Dados (Golang)
 O processador de dados, desenvolvido em Golang, desempenha um papel crucial no projeto. Ao receber as informações do backend, ele adiciona um campo `dateTime` às mesmas e realiza um tratamento no campo `keywords`, convertendo-as para UPPERCASE. Após esse processamento básico, os dados são enviados de volta ao backend para serem salvos no banco de dados MongoDB.
 
+## Fluxograma do Projeto
+
+![Fluxograma](https://github.com/whalyf/google-search-robot/blob/master/data-flow.jpg)
+
 ## Tecnologias Utilizadas
 - Frontend: ReactJS, Vite
 - Backend: NestJS
