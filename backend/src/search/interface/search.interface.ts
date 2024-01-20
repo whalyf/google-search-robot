@@ -1,4 +1,6 @@
-export interface Search {
+import { Document } from "mongoose";
+
+export interface ISearch extends Document{
   keywords: string;
 
   location: string;

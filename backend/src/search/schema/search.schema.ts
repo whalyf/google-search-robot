@@ -1,7 +1,4 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
-
-export type SearchDocument = HydratedDocument<SearchClass>;
 
 @Schema()
 export class SearchClass {

@@ -1,19 +1,19 @@
-import { Body, Controller, Post } from '@nestjs/common';
-import { randomUUID } from 'node:crypto';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { randomUUID } from 'crypto';
 import { SearchService } from './search.service';
 
 @Controller('search')
 export class SearchController {
-  constructor(private readonly appService: SearchService) {}
+  constructor(private readonly searchService: SearchService) {}
 
-  // @Get()
-  // getHello(): string {
-  //   return this.appService.getHello();
-  // }
+  @Get()
+  getHello(): string {
+    return this.searchService.getHello();
+  }
 
   @Post()
   search(@Body() body: any): any {
-    return this.appService.search({
+    return this.searchService.search({
       ...body,
       searchId: randomUUID(),
     });

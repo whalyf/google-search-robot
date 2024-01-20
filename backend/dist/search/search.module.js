@@ -8,6 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SearchModule = void 0;
 const common_1 = require("@nestjs/common");
+const mongoose_1 = require("@nestjs/mongoose");
+const search_schema_1 = require("./schema/search.schema");
 const search_controller_1 = require("./search.controller");
 const search_service_1 = require("./search.service");
 let SearchModule = class SearchModule {
@@ -15,7 +17,7 @@ let SearchModule = class SearchModule {
 exports.SearchModule = SearchModule;
 exports.SearchModule = SearchModule = __decorate([
     (0, common_1.Module)({
-        imports: [],
+        imports: [mongoose_1.MongooseModule.forRoot('mongodb://localhost/nest'), mongoose_1.MongooseModule.forFeature([{ name: 'Search', schema: search_schema_1.SearchSchema }])],
         controllers: [search_controller_1.SearchController],
         providers: [search_service_1.SearchService],
     })

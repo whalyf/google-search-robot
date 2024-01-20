@@ -1,6 +1,7 @@
 import { SearchService } from './search.service';
 export declare class SearchController {
-    private readonly appService;
-    constructor(appService: SearchService);
+    private readonly searchService;
+    constructor(searchService: SearchService);
+    getHello(): string;
     search(body: any): any;
 }

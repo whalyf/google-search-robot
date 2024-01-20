@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { SearchSchema } from './schema/search.schema';
 import { SearchController } from './search.controller';
 import { SearchService } from './search.service';
 
 @Module({
-  imports: [],
+  imports: [MongooseModule.forRoot('mongodb://localhost/nest'), MongooseModule.forFeature([{ name: 'Search', schema: SearchSchema }])],
   controllers: [SearchController],
   providers: [SearchService],
 })

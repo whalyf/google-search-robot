@@ -8,25 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppService = void 0;
 const common_1 = require("@nestjs/common");
-const axios_1 = require("axios");
 let AppService = class AppService {
     getHello() {
         return 'Hello World!';
-    }
-    async sendDataToGoServer(data) {
-        try {
-            const response = await axios_1.default.post('http://localhost:8080/process', data);
-            return response.data;
-        }
-        catch (error) {
-            console.error('Erro ao enviar dados para o servidor Go:', error.message);
-            throw error;
-        }
-    }
-    async search(searchParams) {
-        const processedData = await this.sendDataToGoServer(searchParams);
-        console.log(processedData);
-        return { message: 'Dados da busca salvos com sucesso' };
     }
 };
 exports.AppService = AppService;

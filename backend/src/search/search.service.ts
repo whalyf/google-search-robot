@@ -1,11 +1,23 @@
 import { Injectable } from '@nestjs/common';
-
+import { InjectModel } from '@nestjs/mongoose';
 import axios from 'axios';
-import { Search } from './schemas/search.schema';
+import { Model } from 'mongoose';
+import { SaveSearchDto } from './dto/save-search.dto';
+import { ISearch } from './interface/search.interface';
+import { SearchClass } from './schema/search.schema';
+
 
 @Injectable()
 export class SearchService {
-  async sendDataToGoServer(data: Omit<Search, 'dateTime'>): Promise<Search> {
+  constructor(@InjectModel(SearchClass.name) private searchModel: Model<ISearch>) {}
+
+  getHello(): string {
+    return 'Hello World!';
+  }
+
+  async sendDataToGoServer(
+    data: Omit<SearchClass, 'dateTime'>,
+  ): Promise<SearchClass> {
     try {
       const response = await axios.post('http://localhost:8080/process', data);
       return response.data;
@@ -15,15 +27,17 @@ export class SearchService {
     }
   }
 
-  async saveDataProcessed(data: Search) {
-    console.log('aqui', data);
-
-    return;
+  async saveDataProcessed(saveSearchDto: SaveSearchDto) {
+    console.log('aqui', saveSearchDto);
+    const newSearch = new this.searchModel(saveSearchDto);
+    console.log('ENTROU AQ');
+    return await newSearch.save();
   }
 
-  async search(searchParams: Omit<Search, 'dateTime'>): Promise<any> {
+  async search(searchParams: Omit<SearchClass, 'dateTime'>): Promise<any> {
     const processedData = await this.sendDataToGoServer(searchParams);
-    await this.saveDataProcessed(processedData);
+    // await this.saveDataProcessed(processedData);
+    console.log(processedData, 'aquiii');
     return { message: 'Dados da busca salvos com sucesso' };
   }
 }

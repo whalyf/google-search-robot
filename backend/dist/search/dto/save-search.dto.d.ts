@@ -1,4 +1,4 @@
-export declare class saveSearchDto {
+export declare class SaveSearchDto {
     readonly keywords: string;
     readonly location: string;
     readonly searchId: string;

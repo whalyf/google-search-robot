@@ -14,20 +14,29 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SearchController = void 0;
 const common_1 = require("@nestjs/common");
-const node_crypto_1 = require("node:crypto");
+const crypto_1 = require("crypto");
 const search_service_1 = require("./search.service");
 let SearchController = class SearchController {
-    constructor(appService) {
-        this.appService = appService;
+    constructor(searchService) {
+        this.searchService = searchService;
+    }
+    getHello() {
+        return this.searchService.getHello();
     }
     search(body) {
-        return this.appService.search({
+        return this.searchService.search({
             ...body,
-            searchId: (0, node_crypto_1.randomUUID)(),
+            searchId: (0, crypto_1.randomUUID)(),
         });
     }
 };
 exports.SearchController = SearchController;
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", String)
+], SearchController.prototype, "getHello", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
