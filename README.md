@@ -27,4 +27,4 @@ O processador de dados, desenvolvido em Golang, desempenha um papel crucial no p
 
 ## Como Executar o Projeto
 
-Para executar o projeto localmente, siga as instruções no README específico de cada componente (react-app, backend, go-robot)
+Para executar o projeto localmente, siga as instruções no README específico de cada aplicação (react-app, backend, go-robot)
