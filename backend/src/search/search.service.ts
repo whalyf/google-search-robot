@@ -6,10 +6,11 @@ import { SaveSearchDto } from './dto/save-search.dto';
 import { ISearch } from './interface/search.interface';
 import { SearchClass } from './schema/search.schema';
 
-
 @Injectable()
 export class SearchService {
-  constructor(@InjectModel('Search') private readonly searchModel: Model<ISearch>) {}
+  constructor(
+    @InjectModel('Search') private readonly searchModel: Model<ISearch>,
+  ) {}
 
   async findAll(): Promise<ISearch[]> {
     return await this.searchModel.find();
@@ -34,7 +35,7 @@ export class SearchService {
 
   async search(searchParams: Omit<SearchClass, 'dateTime'>): Promise<any> {
     const processedData = await this.sendDataToGoServer(searchParams);
-    const test = await this.saveDataProcessed(processedData);
+    await this.saveDataProcessed(processedData);
     return { message: 'Dados da busca salvos com sucesso' };
   }
 }

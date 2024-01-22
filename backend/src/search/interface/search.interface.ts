@@ -1,6 +1,6 @@
-import { Document } from "mongoose";
+import { Document } from 'mongoose';
 
-export interface ISearch extends Document{
+export interface ISearch extends Document {
   keywords: string;
 
   location: string;

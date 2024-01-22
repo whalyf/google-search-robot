@@ -17,7 +17,7 @@ export class SearchController {
   }
 
   @Get()
-  findAll(){
+  findAll() {
     return this.searchService.findAll();
   }
 }

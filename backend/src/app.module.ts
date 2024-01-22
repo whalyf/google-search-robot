@@ -7,7 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { SearchModule } from './search/search.module';
 
 @Module({
-  imports: [SearchModule, MongooseModule.forRoot('mongodb://localhost/nest'),],
+  imports: [SearchModule, MongooseModule.forRoot('mongodb://localhost/nest')],
   controllers: [AppController],
   providers: [AppService],
 })
